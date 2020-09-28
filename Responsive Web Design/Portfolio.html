@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    :root {
+      --color-main: hsl(0, 0%, 93%);
+      --color-secondary: hsl(0, 0%, 80%);
+      --color-accent: hsl(202, 100%, 50%);
+    }
+
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      background: var(--color-main);
+      color: #111;
+    }
+
+
+    a {
+      text-decoration: none;
+      color: #111;
+    }
+
+    #navbar {
+      position: sticky;
+      top: 0;
+      background: var(--color-main);
+      box-shadow: 0 2px 2px 2px var(--color-secondary);
+      display: flex;
+      justify-content: flex-end;
+      padding: 0 2em;
+    }
+
+    #navbar ul {
+      display: flex;
+    }
+
+    .nav__Link {
+      list-style: none;
+      font-size: 1.2rem;
+    }
+
+    .nav__Link a {
+      display: block;
+      padding: 1em;
+      margin: 0 .3em;
+    }
+
+    .nav__Link a:hover {
+      background: #ddd;
+    }
+
+    #welcome-section {
+      height: 100vh;
+      display: grid;
+      justify-content: center;
+      padding: 2rem;
+    }
+
+    #projects {
+      display: flex;
+      flex-direction: column;
+      gap: 2.2em;
+      padding: 0 2rem;
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    .project-tile {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr) 15%;
+      grid-template-rows: 10% repeat(2, 1fr);
+      grid-template-areas:
+        "title title link"
+        "image desc tech"
+        "image desc tech";
+      gap: 1em;
+      height: 400px;
+      padding: .5em 1em;
+      position: relative;
+      box-shadow: 2px 2px 2px 2px var(--color-secondary);
+    }
+
+    .project__Link {
+      grid-area: link;
+      border-radius: 10%;
+      background: var(--color-main);
+      padding: .5em .75em;
+    }
+
+    .project__Title {
+      grid-area: title;
+      padding: .2em .5em;
+      text-align: center;
+    }
+
+    .project__Description {
+      grid-area: desc;
+    }
+
+    .project__TechUsed {
+      grid-area: tech;
+    }
+
+    .project__Img {
+      grid-area: image;
+    }
+
+    .project__Img img {
+      height: auto;
+      width: 100%;
+    }
+
+    @media (max-width: 28.75em) {
+      #projects {
+        width: 100%;
+      }
+    }
+  </style>
+
+</head>
+
+
+<body>
+  <nav id="navbar">
+    <ul>
+      <li class='nav__Link'><a href="#welcome-section">About</a></li>
+      <li class='nav__Link'><a href="#projects">Projects</a></li>
+      <li class='nav__Link'><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+  <section id='welcome-section'>
+    <h1>Hi! I'm Daryl Thomas</h1>
+  </section>
+  <section id="projects">
+    <div class='project-tile'>
+
+      <a href='https://aqueous-waters-36043.herokuapp.com/index.php' class='project__Link'>Visit Project</a>
+      <h3 class='project__Title'>Class Scheduling System</h3>
+      <p class='project__Description'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam alias iusto, unde
+        magni neque iste doloribus
+        molestiae natus voluptatum tempore.</p>
+      <section class='project__TechUsed'>
+        <h4 class='project__Tech'>Technologies Used:</h4>
+        <ul class='project__List'>
+          <li>HTML</li>
+          <li>CSS/SCSS</li>
+          <li>Javascript</li>
+          <li>AJAX</li>
+          <li>PHP</li>
+          <li>MySQL</li>
+        </ul>
+      </section>
+      <div class='project__Img'>
+        <img src="Class Scheduling System/Subjects.PNG" alt="!st page">
+      </div>
+    </div>
+    <div class='project-tile'>
+
+      <a href='https://aqueous-waters-36043.herokuapp.com/index.php' class='project__Link'>Visit Project</a>
+      <h3 class='project__Title'>Class Scheduling System</h3>
+      <p class='project__Description'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam alias iusto, unde
+        magni neque iste doloribus
+        molestiae natus voluptatum tempore.</p>
+      <section class='project__TechUsed'>
+        <h4 class='project__Tech'>Technologies Used:</h4>
+        <ul class='project__List'>
+          <li>HTML</li>
+          <li>CSS/SCSS</li>
+          <li>Javascript</li>
+          <li>AJAX</li>
+          <li>PHP</li>
+          <li>MySQL</li>
+        </ul>
+      </section>
+      <div class='project__Img'>
+        <img src="Class Scheduling System/Subjects.PNG" alt="!st page">
+      </div>
+    </div>
+    <div class='project-tile'>
+
+      <a href='https://aqueous-waters-36043.herokuapp.com/index.php' class='project__Link'>Visit Project</a>
+      <h3 class='project__Title'>Class Scheduling System</h3>
+      <p class='project__Description'>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam alias iusto, unde
+        magni neque iste doloribus
+        molestiae natus voluptatum tempore.</p>
+      <section class='project__TechUsed'>
+        <h4 class='project__Tech'>Technologies Used:</h4>
+        <ul class='project__List'>
+          <li>HTML</li>
+          <li>CSS/SCSS</li>
+          <li>Javascript</li>
+          <li>AJAX</li>
+          <li>PHP</li>
+          <li>MySQL</li>
+        </ul>
+      </section>
+      <div class='project__Img'>
+        <img src="Class Scheduling System/Subjects.PNG" alt="!st page">
+      </div>
+    </div>
+
+  </section>
+  <section id="contact">
+    <a href="https://github.com/ThomasTW935" target='_blank' id='profile-link'>GitHub</a>
+  </section>
+</body>
+
+</html>

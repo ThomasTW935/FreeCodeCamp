@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+
+    a {
+      color: black;
+      text-decoration: none;
+    }
+
+    #navbar {
+      grid-area: nav;
+      padding: .5em 1em;
+      position: fixed;
+      width: 290px;
+    }
+
+    #navbar header {
+      font-size: 1.3rem;
+    }
+
+    #navbar-list {
+      margin: .5em 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    #navbar-list li {
+      list-style: none;
+
+    }
+
+    .nav-link {
+      display: block;
+      padding: .5em 0;
+    }
+
+    .nav-link:hover {
+      background: #ddd;
+    }
+
+    #main-doc {
+      grid-area: main;
+      width: 80%;
+      padding: 2em;
+      position: absolute;
+      left: 300px;
+    }
+
+    #main-doc header {
+      font-size: 2rem;
+    }
+
+    #main-doc h2,
+    #main-doc h3 {
+      font-weight: 300;
+    }
+
+    #main-doc h2,
+    #main-doc h3,
+    #main-doc p,
+    #main-doc ul {
+      padding: .5em 0;
+    }
+
+    #main-doc ul {
+      padding: .5em 3em;
+    }
+
+    .main-section {
+      margin-bottom: 4em;
+    }
+
+    .code-indent {
+      padding-left: 1.5em;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <nav id="navbar">
+    <header>Python Tutorial</header>
+    <ul id='navbar-list'>
+      <li><a class='nav-link' href='#Introduction'>Introduction</a></li>
+      <li><a class='nav-link' href='#Syntax'>Syntax</a></li>
+      <li><a class='nav-link' href='#Comments'>Comments</a></li>
+      <li><a class='nav-link' href='#Variables'>Variables</a></li>
+      <li><a class='nav-link' href='#Data_Types'>Data Types</a></li>
+    </ul>
+  </nav>
+  <main id="main-doc">
+    <section class="main-section" id='Introduction'>
+      <header>Introduction</header>
+      <article>
+        <h2>What is Python?</h2>
+        <p>Python is a popular programming language. It was created by Guido van Rossum, and released in 1991.</p>
+        <p>It is used for:</p>
+        <ul>
+          <li>web development (server-side),</li>
+          <li>software development,</li>
+          <li>mathematics,</li>
+          <li>system scripting</li>
+        </ul>
+        <h3>What can Python do?</h3>
+        <ul>
+          <li>Python can be used on a server to create web appplications.</li>
+          <li>Python can be used alongside software to create workflows.</li>
+          <li>Python can connect to database systems. It can also read and modify files.</li>
+          <li>Python can be used to handle big data and perform complex mathematics.</li>
+          <li>Python can be used for rapid prototyping, or for production-ready software development.</li>
+        </ul>
+        <h3>Why Python?</h3>
+        <ul>
+          <li>Python works on different platforms (Windoes, Mac, Linux, Raspberry Pi, etc).</li>
+          <li>Python has a simple syntax similar to the English language.</li>
+          <li>Python has syntax that allows developers to write programs with fewer lines than some other programming
+            languages.</li>
+          <li>Python runs on an interpreter system, meaning that code can be executed as soon as it is writter. This
+            means prototying can be very quick.</li>
+          <li>Python can be treated in a procedural way, an object-oriented way or a functional way.</li>
+        </ul>
+        <h3>Good to know</h3>
+        <ul>
+          <li>The most recent major version of Python is Python 4, which we shall be using in this tutorial. However,
+            Python 2, although not being updated with anything other than security updatedm is still quite popular.</li>
+          <li>In this tutorial Python will be written in a text editor. It is possible to write Python in an Integrated
+            Development Environment, such as Thonnu, Pycharm, Netbeans or Eclipse which are particularly useful when
+            managing larger collections of Python files.</li>
+        </ul>
+        <h3>Python Syntax compared to other programming languages</h3>
+        <ul>
+          <li>Python was designed for readability, and has some similarities to the English language with influence from
+            mathematic.</li>
+          <li>Python uses new lines to complete a command, as opposed to other programming languages which often use
+            semicolons or parentheses.</li>
+          <li>Python relies on indentation, useing whitespace, to define scope; such as the scope of loops, functions
+            and classes. Other programming languages often use curly-brackets for this purpose.</li>
+        </ul>
+        <h3>Example</h3>
+        <code>print("Hello World!")</code>
+      </article>
+    </section>
+    <section class="main-section" id='Syntax'>
+      <header>Syntax</header>
+      <article>
+        <h2>Python Indentation</h2>
+        <p>Indentation refersto the spaces at the beginning of a code line.</p>
+        <p>Where in other programming languages the indentation in code is for readability only, the indentation in
+          Python is very important.</p>
+        <p>Python uses indentation to indicate a block of code.</p>
+        <h2>Example</h2>
+        <code>if 5> 2: <br> <span class='code-indent'>print("Five is greater than 2")</span></code>
+        <p>Python will give you an error if you skip the indentation:</p>
+        <h2>Example</h2>
+        <p>Syntax Error:</p>
+        <code>if 5> 2: <br> print("Five is greater than 2")</code>
+        <p>The number of spaces is up to you as a programmer, but it has to be at least one.</p>
+        <h2>Example</h2>
+        <code>if 5 > 2: <br>
+          <span class='code-indent'>print("Five is greater than two!")</span> <br>
+         if 5 > 2:<br>
+         <span class='code-indent'><span class='code-indent'>print("Five is greater than two!")</span></span> </code>
+        <p>You have to use the same number of spaces in the same block of code, otherwise Python will give you an error:
+        </p>
+        <h2>Example</h2>
+        <p>Syntax Error:</p>
+        <code>if 5 > 2: <br>
+          <span class='code-indent'>print("Five is greater than two!")</span> <br>
+         <span class='code-indent'><span class='code-indent'>print("Five is greater than two!")</span></span> </code>
+      </article>
+    </section>
+    <section class="main-section" id='Comments'>
+      <header>Comments</header>
+    </section>
+    <section class="main-section" id='Variables'>
+      <header>Variables</header>
+    </section>
+    <section class="main-section" id='Data_Types'>
+      <header>Data Types</header>
+    </section>
+  </main>
+
+</body>
+
+</html>
