@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    function rot13(str) {
+      let newStr = str.toUpperCase()
+      let allowedChars = /[A-Z]/
+      let places = 13
+      let firstCode = 'A'.charCodeAt()
+      let lastCode = 'Z'.charCodeAt()
+      let output = ''
+      for (let i = 0; i < newStr.length; i++) {
+        let char = newStr[i]
+        if (allowedChars.test(char)) {
+          let code = newStr.charCodeAt(i)
+          code += places
+          if (code > lastCode) {
+            code = code % lastCode + firstCode - 1
+          }
+          char = String.fromCharCode(code)
+        }
+        output += char
+      }
+      console.log(lastCode)
+      console.log(output)
+      return str;
+    }
+
+    rot13("SERR PBQR PNZC");
+
+  </script>
+</head>
+
+<body>
+
+
+  One of the simplest and most widely known ciphers is a Caesar cipher, also known as a shift cipher. In a shift cipher
+  the meanings of the letters are shifted by some set amount.
+
+  A common modern use is the ROT13 cipher, where the values of the letters are shifted by 13 places. Thus 'A' ↔ 'N', 'B'
+  ↔ 'O' and so on.
+
+  Write a function which takes a ROT13 encoded string as input and returns a decoded string.
+
+  All letters will be uppercase. Do not transform any non-alphabetic character (i.e. spaces, punctuation), but do pass
+  them on.
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    function RomanNumeralConverter(num) {
+      let romanNumerals = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I']
+      let romanNumeralsValues = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+      let outputRomanNumeral = ''
+      for (let i = 0; i < romanNumerals.length; i++) {
+        while (romanNumeralsValues[i] <= num) {
+          outputRomanNumeral += romanNumerals[i]
+          num -= romanNumeralsValues[i]
+        }
+
+      }
+      console.log(num)
+      console.log(outputRomanNumeral)
+    }
+
+    RomanNumeralConverter(943)
+  </script>
+</head>
+
+<body>
+
+  Convert the given number into a roman numeral.
+
+  All roman numerals answers should be provided in upper-case.
+</body>
+
+</html>

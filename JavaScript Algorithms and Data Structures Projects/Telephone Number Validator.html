@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    function telephoneCheck(str) {
+      let hasTenDigits = false;
+      let hasElevenDigits = false;
+      let startsWithOne = false;
+      let hasPermittedCharsOnly = false;
+      let hasCorrectParentheses = false;
+
+      // Write regular expressions here so that the Booleans contain the correct values
+      // INSERT CODE WITH REGEX HERE
+      let countDigits = str.match(/[0-9]/g).length
+      if (countDigits == 10) {
+        hasTenDigits = true
+      } else if (countDigits == 11) {
+        hasElevenDigits = true
+      }
+
+      if (!/[^0-9 \-\(\)]/.test(str)) {
+        hasPermittedCharsOnly = true
+      }
+      if (!/[^0-9]/.test(str)) {
+        hasCorrectParentheses = true
+      } else if (/[\(\)\- ]/.test(str)) {
+        if (/[\(\)]/.test(str)) {
+          if (/^[1.\s|1]*\(\d{3}\)[\s\-]*\d{3}[\s|\-]?\d{4}$/.test(str)) {
+            hasCorrectParentheses = true
+          }
+        } else {
+          if (/^[1.\s|1]*\d{3}[\s|\-]*\d{3}[\s|\-]?\d{4}$/.test(str)) {
+            hasCorrectParentheses = true
+          }
+        }
+      }
+      if (/^1/.test(str)) {
+        startsWithOne = true
+      }
+      // console.log(/^[0-9]/.test(str))
+      // console.log(/\(\d{3}\)\d{3}-\d{4}/.test(str))
+      // console.log(/\(\d{3}\) \d{3}-\d{4}/.test(str))
+      // console.log(/^[(1]*\d{3}[\)\s\-]*\d{3}-\d{4}$/.test(str))
+      // console.log(/\d{3}\-\d{3}-\d{4}/.test(str))
+      // console.log(/\d{3} \d{3} \d{4}/.test(str))
+      // console.log(/[\(\)\- ]/.test(str))
+      // console.log(/[\(\)]/.test(str))
+      // console.log(/^1\s/.test(str))
+      // console.log(/^(\s|\-)/.test(str))
+      // Use the Booleans to return true or false, without needing to string together one complex regular expression
+      if (!hasTenDigits && !hasElevenDigits) {
+        return false;
+      } else if (!hasPermittedCharsOnly || !hasCorrectParentheses) {
+        return false;
+      } else if (hasElevenDigits && !startsWithOne) {
+        return false;
+      } else {
+        return true;
+      }
+    }
+
+    telephoneCheck("1 (555)555-5555")
+    telephoneCheck("1 (555) 555-5555")
+    telephoneCheck("555 555 5555")
+    // console.log(telephoneCheck("(555) 555-5555"))
+
+
+
+  </script>
+</head>
+
+<body>
+
+
+  Return true if the passed string looks like a valid US phone number.
+
+  The user may fill out the form field any way they choose as long as it has the format of a valid US number. The
+  following are examples of valid formats for US numbers (refer to the tests below for other variants):
+
+  555-555-5555
+  (555)555-5555
+  (555) 555-5555
+  555 555 5555
+  5555555555
+  1 555 555 5555
+
+  For this challenge you will be presented with a string such as 800-692-7753 or 8oo-six427676;laskdjf. Your job is to
+  validate or reject the US phone number based on any combination of the formats provided above. The area code is
+  required. If the country code is provided, you must confirm that the country code is 1. Return true if the string is a
+  valid US phone number; otherwise return false.
+
+</body>
+
+</html>
