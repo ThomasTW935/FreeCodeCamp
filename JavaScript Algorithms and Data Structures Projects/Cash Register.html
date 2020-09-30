@@ -5,6 +5,115 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <script>
+    const values =
+      [
+        { name: "PENNY", price: (0.01 * 100) },
+        { name: "NICKEL", price: (0.05 * 100) },
+        { name: "DIME", price: (.1 * 100) },
+        { name: "QUARTER", price: (.25 * 100) },
+        { name: "ONE", price: (1 * 100) },
+        { name: "FIVE", price: (5 * 100) },
+        { name: "TEN", price: (10 * 100) },
+        { name: "TWENTY", price: (20 * 100) },
+        { name: "ONE HUNDRED", price: (100 * 100) },
+      ]
+    let UnitGreaterThanZero = (arr) => {
+      return arr.filter(x => {
+        return x[1] > 0
+      })
+    }
+    function checkCashRegister(price, cash, cid) {
+      const cidCopy = cid.map((x => x))
+
+      let change = (cash - price) * 100
+      let output = {
+        status: "",
+        change: []
+      };
+      // Remove cid that have zero values and reversed the array
+      const cidAboveZero = UnitGreaterThanZero(cidCopy).reverse()
+      if (cidAboveZero.length <= 0) {
+        output.status = "INSUFFICIENT_FUNDS"
+        output.change = []
+      } else {
+        let cidWithValues = cidAboveZero
+        cidWithValues.forEach(item => {
+          let cidValue = values.filter(value => {
+            if (value.name == item[0]) {
+              return value
+            }
+          })
+          item[1] = Math.round(item[1] * 100)
+          item.push(cidValue[0].price)
+        })
+        let cidWithValuesCopy = cidWithValues.map((x) => x)
+        let changeArr = []
+        cidWithValues.forEach(item => {
+          let count = 0
+          let newCid = []
+          while (item[2] <= change) {
+            if (item[1] <= 0) {
+              break
+            }
+            change -= item[2]
+            item[1] -= item[2]
+            count++
+          }
+          if (count > 0) {
+            let newArr = [item[0], (item[2] * count / 100)]
+            changeArr.push(newArr)
+          }
+          item[1] -= (item[2] * count)
+          item[1] /= 100
+          item.pop()
+        })
+        let totalCash = cid.reduce((currentCash, item) => {
+          return currentCash += item[1]
+        }, 0)
+        if (change == 0) {
+          if (totalCash <= 0) {
+            cid.forEach(item => {
+              let sameUnit = changeArr.filter(x => {
+                return x[0] == item[0]
+              })
+              if (sameUnit.length > 0) {
+                item[1] = sameUnit[0][1]
+              }
+            })
+            output.status = "CLOSED"
+            output.change = cid
+          } else {
+
+            output.status = "OPEN"
+            output.change = changeArr
+          }
+        } else {
+          output.status = "INSUFFICIENT FUNDS"
+          output.change = []
+        }
+
+      }
+      console.log(output)
+      return output
+    }
+
+    checkCashRegister(19.5, 20, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]])
+    // should return {status: "OPEN", change: [["QUARTER", 0.5]]}.
+    checkCashRegister(3.26, 100, [["PENNY", 1.01], ["NICKEL", 2.05], ["DIME", 3.1], ["QUARTER", 4.25], ["ONE", 90], ["FIVE", 55], ["TEN", 20], ["TWENTY", 60], ["ONE HUNDRED", 100]])
+    // should return {status: "OPEN", change: [["TWENTY", 60], ["TEN", 20], ["FIVE", 15], ["ONE", 1], ["QUARTER", 0.5], ["DIME", 0.2], ["PENNY", 0.04]]}.
+    checkCashRegister(19.5, 20, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]])
+    // should return {status: "INSUFFICIENT_FUNDS", change: []}.
+    checkCashRegister(19.5, 20, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 1], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]])
+    // should return {status: "INSUFFICIENT_FUNDS", change: []}.
+    checkCashRegister(19.5, 20, [["PENNY", 0.5], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]])
+    // should return {status: "CLOSED", change: [["PENNY", 0.5], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]]}
+    checkCashRegister(19.5, 20, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 0], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]])
+    // should return {status: "INSUFFICIENT_FUNDS", change: []}
+    console.log((checkCashRegister(19.5, 20, [["PENNY", 0.01], ["NICKEL", 0], ["DIME", 0], ["QUARTER", 0], ["ONE", 1], ["FIVE", 0], ["TEN", 0], ["TWENTY", 0], ["ONE HUNDRED", 0]])))
+//  should return {status: "INSUFFICIENT_FUNDS", change: []}
+
+  </script>
 </head>
 
 <body>
